@@ -6,9 +6,16 @@
 //
 
 import Foundation
-import 
+import Combine
 
-var landmarks: [Landmark] = load("landmarkData.json")
+//Declare a new model type that conforms to the ObservableObject protocol from the Combine framework.
+
+
+final class ModelData: ObservableObject {
+    var landmarks: [Landmark] = load("landmarkData.json")
+}
+
+//SwiftUI subscribes to your observable object, and updates any views that need refreshing when the data changes.
 
 func load<T: Decodable> (_ filename: String) -> T {
     let data: Data
